@@ -255,22 +255,22 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Id"/>
+            <Property name="text" type="java.lang.String" value="Id *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="First name"/>
+            <Property name="text" type="java.lang.String" value="First name *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Last name"/>
+            <Property name="text" type="java.lang.String" value="Last name *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Birth year"/>
+            <Property name="text" type="java.lang.String" value="Birth year *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -290,7 +290,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exp in year"/>
+            <Property name="text" type="java.lang.String" value="Exp in year *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">

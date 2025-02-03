@@ -59,7 +59,7 @@ public class InternshipPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtMajors = new javax.swing.JTextField();
+        txtMajor = new javax.swing.JTextField();
         txtUniversity = new javax.swing.JTextField();
         btnAddNew = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -85,7 +85,7 @@ public class InternshipPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "First name", "Last name", "Birth year", "Address", "Phone", "Email", "Majors", "Semester", "University"
+                "Id", "First name", "Last name", "Birth year", "Address", "Phone", "Email", "Major", "Semester", "University"
             }
         ) {
             Class[] types = new Class [] {
@@ -113,7 +113,7 @@ public class InternshipPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("FRESHER");
+        jLabel2.setText("INTERNSHIP");
 
         jLabel1.setText("Id");
 
@@ -129,7 +129,7 @@ public class InternshipPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Email");
 
-        jLabel9.setText("Majors");
+        jLabel9.setText("Major");
 
         jLabel10.setText("Semester");
 
@@ -191,7 +191,7 @@ public class InternshipPanel extends javax.swing.JPanel {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMajors)
+                    .addComponent(txtMajor)
                     .addComponent(txtEmail)
                     .addComponent(txtPhone)
                     .addComponent(txtAddress)
@@ -235,7 +235,7 @@ public class InternshipPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtMajors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -363,7 +363,7 @@ public class InternshipPanel extends javax.swing.JPanel {
         txtAddress.setText("");
         txtPhone.setText("");
         txtEmail.setText("");
-        txtMajors.setText("");
+        txtMajor.setText("");
         txtSemester.setText("");
         txtUniversity.setText("");
     }// GEN-LAST:event_btnCancel1MousePressed
@@ -388,7 +388,7 @@ public class InternshipPanel extends javax.swing.JPanel {
                     txtAddress.getText(),
                     phone,
                     email,
-                    txtMajors.getText(),
+                    txtMajor.getText(),
                     txtSemester.getText(),
                     txtUniversity.getText()), candidateType);
             canAdd = true;
@@ -415,7 +415,7 @@ public class InternshipPanel extends javax.swing.JPanel {
         txtAddress.setText((String) data[4]);
         txtPhone.setText((String) data[5]);
         txtEmail.setText((String) data[6]);
-        txtMajors.setText((String) data[7]);
+        txtMajor.setText((String) data[7]);
         txtSemester.setText((String) data[8]);
         txtUniversity.setText((String) data[9]);
     }// GEN-LAST:event_jTable1MousePressed
@@ -425,8 +425,8 @@ public class InternshipPanel extends javax.swing.JPanel {
      */
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnDeleteMousePressed
         int[] rows = tbData.getSelectedRows();
-        for (int row = 0; row < rows.length; row++) {
-            String id = (String) tbData.getValueAt(row, 0);
+        for (int i = 0; i < rows.length; i++) {
+            String id = (String) tbData.getValueAt(rows[i], 0);
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
             database.Query.delete(candidate, candidateType);
         }
@@ -510,7 +510,7 @@ public class InternshipPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtMajors;
+    private javax.swing.JTextField txtMajor;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtSemester;
     private javax.swing.JTextField txtUniversity;

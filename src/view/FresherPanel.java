@@ -115,13 +115,13 @@ public class FresherPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("FRESHER");
 
-        jLabel1.setText("Id");
+        jLabel1.setText("Id *");
 
-        jLabel3.setText("First name");
+        jLabel3.setText("First name *");
 
-        jLabel4.setText("Last name");
+        jLabel4.setText("Last name *");
 
-        jLabel5.setText("Birth year");
+        jLabel5.setText("Birth year *");
 
         jLabel6.setText("Address");
 
@@ -129,7 +129,7 @@ public class FresherPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Email");
 
-        jLabel9.setText("Graduation year");
+        jLabel9.setText("Graduation year *");
 
         jLabel10.setText("Graduation rank");
 
@@ -459,9 +459,9 @@ public class FresherPanel extends javax.swing.JPanel {
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnDeleteMousePressed
         // Get selected rows for deletion
         int[] rows = tbData.getSelectedRows();
-        for (int row = 0; row < rows.length; row++) {
+        for (int i = 0; i < rows.length; i++) {
             // Retrieve ID from the selected row
-            String id = (String) tbData.getValueAt(row, 0);
+            String id = (String) tbData.getValueAt(rows[i], 0);
             // Find the candidate by ID
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
             // Delete the candidate from the database

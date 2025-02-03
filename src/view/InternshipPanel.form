@@ -76,7 +76,7 @@
                 <Column editable="false" title="Address" type="java.lang.String"/>
                 <Column editable="false" title="Phone" type="java.lang.String"/>
                 <Column editable="false" title="Email" type="java.lang.String"/>
-                <Column editable="false" title="Majors" type="java.lang.String"/>
+                <Column editable="false" title="Major" type="java.lang.String"/>
                 <Column editable="false" title="Semester" type="java.lang.String"/>
                 <Column editable="false" title="University" type="java.lang.String"/>
               </Table>
@@ -151,7 +151,7 @@
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="FRESHER"/>
+        <Property name="text" type="java.lang.String" value="INTERNSHIP"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -187,7 +187,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtMajors" max="32767" attributes="0"/>
+                      <Component id="txtMajor" max="32767" attributes="0"/>
                       <Component id="txtEmail" max="32767" attributes="0"/>
                       <Component id="txtPhone" max="32767" attributes="0"/>
                       <Component id="txtAddress" max="32767" attributes="0"/>
@@ -241,7 +241,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMajors" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMajor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -303,7 +303,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Majors"/>
+            <Property name="text" type="java.lang.String" value="Major"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
@@ -325,7 +325,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMajors">
+        <Component class="javax.swing.JTextField" name="txtMajor">
         </Component>
         <Component class="javax.swing.JTextField" name="txtUniversity">
         </Component>

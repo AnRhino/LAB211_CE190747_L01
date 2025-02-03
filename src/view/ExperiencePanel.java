@@ -113,13 +113,13 @@ public class ExperiencePanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("EXPERIENCE");
 
-        jLabel1.setText("Id");
+        jLabel1.setText("Id *");
 
-        jLabel3.setText("First name");
+        jLabel3.setText("First name *");
 
-        jLabel4.setText("Last name");
+        jLabel4.setText("Last name *");
 
-        jLabel5.setText("Birth year");
+        jLabel5.setText("Birth year *");
 
         jLabel6.setText("Address");
 
@@ -127,7 +127,7 @@ public class ExperiencePanel extends javax.swing.JPanel {
 
         jLabel8.setText("Email");
 
-        jLabel9.setText("Exp in year");
+        jLabel9.setText("Exp in year *");
 
         jLabel10.setText("Prof skill");
 
@@ -441,9 +441,9 @@ public class ExperiencePanel extends javax.swing.JPanel {
         // Get selected rows
         int[] rows = tbData.getSelectedRows();
         // Loop through selected rows to delete candidates
-        for (int row = 0; row < rows.length; row++) {
+        for (int i = 0; i < rows.length; i++) {
             // Get the ID of the candidate to delete
-            String id = (String) tbData.getValueAt(row, 0);
+            String id = (String) tbData.getValueAt(rows[i], 0);
             // Find the candidate by ID
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
             // Delete the candidate from the database

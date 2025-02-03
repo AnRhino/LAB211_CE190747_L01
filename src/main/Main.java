@@ -5,20 +5,18 @@
  */
 package main;
 
-import java.awt.BorderLayout;
-
 /**
- *
- * @author PeterNguyen
+ * Main class to launch the application.
  */
 public class Main {
 
     /**
+     * The entry point of the application.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        view.MenuFrame menu = new view.MenuFrame();
-        menu.setVisible(true);
+        view.MenuFrame menu = new view.MenuFrame(); // Create a new MenuFrame
+        menu.setVisible(true); // Set the MenuFrame to be visible
     }
 
 }

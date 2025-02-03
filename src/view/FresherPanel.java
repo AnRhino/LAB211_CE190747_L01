@@ -6,23 +6,22 @@
 package view;
 
 /**
- *
- * @author PeterNguyen
+ * FresherPanel is a GUI panel for managing fresher candidates.
  */
 public class FresherPanel extends javax.swing.JPanel {
 
-    private final controller.TableController tableController;
-    private final int candidateType = 1;
-    private boolean canAdd;
+    private final controller.TableController tableController; // Controller for managing table data
+    private final int candidateType = 1; // Type for fresher candidates
+    private boolean canAdd; // Flag to check if a candidate can be added
 
     /**
-     * Creates new form ExperiencePanel
+     * Creates new form FresherPanel.
      */
     public FresherPanel() {
-        initComponents();
-        tableController = new controller.TableController(jTable1);
-        jTable1.setVisible(true);
-        setVisible(true);
+        initComponents(); // Initialize components
+        tableController = new controller.TableController(jTable1); // Create a new TableController
+        jTable1.setVisible(true); // Make the table visible
+        setVisible(true); // Make the panel visible
     }
 
     /**
@@ -350,28 +349,54 @@ public class FresherPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles the action of the Cancel button for the first panel.
+     * Clears all input fields related to candidate information.
+     */
     private void btnCancel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel1MousePressed
+        // Clear the text field for ID
         txtId.setText("");
+        // Clear the text field for First Name
         txtFirstName.setText("");
+        // Clear the text field for Last Name
         txtLastName.setText("");
+        // Clear the text field for Birth Year
         txtBirthYear.setText("");
+        // Clear the text field for Address
         txtAddress.setText("");
+        // Clear the text field for Phone
         txtPhone.setText("");
+        // Clear the text field for Email
         txtEmail.setText("");
+        // Clear the text field for Graduation Year
         txtGraduationYear.setText("");
+        // Reset the Graduation Rank combo box selection
         cbbGraduationRank.setSelectedIndex(-1);
+        // Clear the text field for University
         txtUniversity.setText("");
     }//GEN-LAST:event_btnCancel1MousePressed
 
+    /**
+     * Handles the action of the Add New button.
+     * Validates input fields and adds a new fresher candidate to the database.
+     */
     private void btnAddNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewMousePressed
         try {
+            // Validate and retrieve ID
             String id = database.Validation.checkId(txtId.getText(), candidateType);
+            // Validate and retrieve First Name
             String firstName = database.Validation.checkName(txtFirstName.getText());
+            // Validate and retrieve Last Name
             String lastName = database.Validation.checkName(txtLastName.getText());
+            // Validate and retrieve Birth Year
             int birthYear = database.Validation.checkBirthYear(txtBirthYear.getText());
+            // Validate and retrieve Phone
             String phone = database.Validation.checkPhone(txtPhone.getText());
+            // Validate and retrieve Email
             String email = database.Validation.checkEmail(txtEmail.getText());
+            // Validate and retrieve Graduation Year
             int graduationYear = database.Validation.checkGraduationYear(txtGraduationYear.getText());
+            // Add new Fresher to the database
             database.Query.addNew(new database.Fresher(
                     id,
                     firstName,
@@ -384,19 +409,32 @@ public class FresherPanel extends javax.swing.JPanel {
                     cbbGraduationRank.getItemAt(cbbGraduationRank.getSelectedIndex()),
                     txtUniversity.getText()
             ), candidateType);
+            // Set flag indicating addition was successful
             canAdd = true;
+            // Refresh the table display
             tableController.display(database.Query.getList(candidateType));
+            // Clear input fields
             btnCancel1MousePressed(evt);
         } catch (Exception e) {
+            // Set flag indicating addition failed
             canAdd = false;
+            // Show error message
             javax.swing.JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnAddNewMousePressed
 
+    /**
+     * Handles the action of selecting a row in the table.
+     * Populates the input fields with the selected candidate's data.
+     */
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // Get the selected row index
         int row = jTable1.getSelectedRow();
+        // Retrieve ID from the selected row
         String id = (String) jTable1.getValueAt(row, 0);
+        // Get candidate properties by ID
         Object[] data = database.Query.getPropertiesById(id, candidateType);
+        // Populate text fields with candidate data
         txtId.setText((String) data[0]);
         txtFirstName.setText((String) data[1]);
         txtLastName.setText((String) data[2]);
@@ -409,37 +447,71 @@ public class FresherPanel extends javax.swing.JPanel {
         txtUniversity.setText((String) data[9]);
     }//GEN-LAST:event_jTable1MousePressed
 
+    /**
+     * Handles the action of the Delete button.
+     * Deletes the selected candidates from the database.
+     */
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMousePressed
+        // Get selected rows for deletion
         int[] rows = jTable1.getSelectedRows();
         for (int row = 0; row < rows.length; row++) {
+            // Retrieve ID from the selected row
             String id = (String) jTable1.getValueAt(row, 0);
+            // Find the candidate by ID
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
+            // Delete the candidate from the database
             database.Query.delete(candidate, candidateType);
         }
+        // Refresh the table display
         tableController.display(database.Query.getList(candidateType));
+        // Clear input fields
         btnCancel1MousePressed(evt);
     }//GEN-LAST:event_btnDeleteMousePressed
 
+    /**
+     * Handles the action of the Update button.
+     * Updates the selected candidate's information in the database.
+     */
     private void btnUpdateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMousePressed
+        // Get the selected row index
         int row = jTable1.getSelectedRow();
+        // Retrieve old ID from the selected row
         String oldId = (String) jTable1.getValueAt(row, 0);
+        // Find the old candidate by ID
         database.Candidate oldCandidate = database.Query.find(oldId, "", true, true, candidateType).get(0);
+        // Delete the old candidate from the database
         database.Query.delete(oldCandidate, candidateType);
+        // Add new candidate data
         btnAddNewMousePressed(evt);
+        // If addition failed, re-add the old candidate
         if (!canAdd) {
             database.Query.addNew(oldCandidate, candidateType);
         }
     }//GEN-LAST:event_btnUpdateMousePressed
 
+    /**
+     * Handles the action of the Cancel button for the second panel.
+     * Clears the search fields and refreshes the candidate list.
+     */
     private void btnCancel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel2MousePressed
+        // Clear the text field for Find ID
         txtFindId.setText("");
+        // Clear the text field for Find Name
         txtFindName.setText("");
+        // Reset the Match Case checkbox
         cbMatchCase.setSelected(false);
+        // Reset the Match Word checkbox
         cbMatchWord.setSelected(false);
+        // Refresh the table display
         tableController.display(database.Query.getList(candidateType));
     }//GEN-LAST:event_btnCancel2MousePressed
 
+    /**
+     * Handles the action of the Find All button.
+     * Searches for candidates based on the provided criteria and displays the results.
+     */
     private void btnFindAllMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFindAllMousePressed
+        // Find candidates based on search criteria
         java.util.ArrayList<database.Candidate> list = database.Query.find(
                 txtFindId.getText(),
                 txtFindName.getText(),
@@ -447,6 +519,7 @@ public class FresherPanel extends javax.swing.JPanel {
                 cbMatchWord.isSelected(),
                 candidateType
         );
+        // Display the found candidates in the table
         tableController.display(list);
     }//GEN-LAST:event_btnFindAllMousePressed
 

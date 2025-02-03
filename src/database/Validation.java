@@ -6,20 +6,26 @@
 package database;
 
 /**
- *
- * @author PeterNguyen
+ * Validation class provides methods to validate candidate data.
  */
 public class Validation {
 
+    /**
+     * Validates the candidate ID.
+     * @param id the candidate ID to validate
+     * @param type the type of candidate
+     * @return the validated ID
+     * @throws Exception if the ID is invalid
+     */
     public static String checkId(String id, int type) throws Exception {
-        id = id.trim().toUpperCase();
-        if (id.isEmpty()) {
-            throw new Exception("Id must not be empty");
+        id = id.trim().toUpperCase(); // Trim and convert ID to uppercase
+        if (id.isEmpty()) { // Check if ID is empty
+            throw new Exception("Id must not be empty"); // Throw exception if empty
         }
-        if (database.Query.getIdList(type).contains(id)) {
-            throw new Exception("Id already existed");
+        if (database.Query.getIdList(type).contains(id)) { // Check if ID already exists
+            throw new Exception("Id already existed"); // Throw exception if exists
         }
-        return id;
+        return id; // Return validated ID
     }
 
     public static int checkBirthYear(String birthYear) throws Exception {

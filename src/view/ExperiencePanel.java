@@ -6,23 +6,22 @@
 package view;
 
 /**
- *
- * @author PeterNguyen
+ * ExperiencePanel is a GUI panel for managing experience candidates.
  */
 public class ExperiencePanel extends javax.swing.JPanel {
 
-    private final controller.TableController tableController;
-    private final int candidateType = 0;
-    private boolean canAdd;
+    private final controller.TableController tableController; // Controller for managing table data
+    private final int candidateType = 0; // Type for experience candidates
+    private boolean canAdd; // Flag to check if a candidate can be added
 
     /**
      * Creates new form ExperiencePanel
      */
     public ExperiencePanel() {
-        initComponents();
-        tableController = new controller.TableController(jTable1);
-        jTable1.setVisible(true);
-        setVisible(true);
+        initComponents(); // Initialize components
+        tableController = new controller.TableController(jTable1); // Create a new TableController
+        jTable1.setVisible(true); // Make the table visible
+        setVisible(true); // Make the panel visible
     }
 
     /**
@@ -337,27 +336,50 @@ public class ExperiencePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Clears all input fields when the cancel button is pressed.
+     */
     private void btnCancel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel1MousePressed
+        // Clear the text field for ID
         txtId.setText("");
+        // Clear the text field for First Name
         txtFirstName.setText("");
+        // Clear the text field for Last Name
         txtLastName.setText("");
+        // Clear the text field for Birth Year
         txtBirthYear.setText("");
+        // Clear the text field for Address
         txtAddress.setText("");
+        // Clear the text field for Phone
         txtPhone.setText("");
+        // Clear the text field for Email
         txtEmail.setText("");
+        // Clear the text field for Experience in Year
         txtExpInYear.setText("");
+        // Clear the text field for Professional Skill
         txtProfSkill.setText("");
     }//GEN-LAST:event_btnCancel1MousePressed
 
+    /**
+     * Validates input fields and adds a new experience record when the add button is pressed.
+     */
     private void btnAddNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewMousePressed
         try {
+            // Validate and get the ID
             String id = database.Validation.checkId(txtId.getText(), candidateType);
+            // Validate and get the First Name
             String firstName = database.Validation.checkName(txtFirstName.getText());
+            // Validate and get the Last Name
             String lastName = database.Validation.checkName(txtLastName.getText());
+            // Validate and get the Birth Year
             int birthYear = database.Validation.checkBirthYear(txtBirthYear.getText());
+            // Validate and get the Phone number
             String phone = database.Validation.checkPhone(txtPhone.getText());
+            // Validate and get the Email
             String email = database.Validation.checkEmail(txtEmail.getText());
+            // Validate and get the Experience in Year
             int expInYear = database.Validation.checkExpInYear(txtExpInYear.getText());
+            // Add new experience record to the database
             database.Query.addNew(new database.Experience(
                     id,
                     firstName,
@@ -369,19 +391,31 @@ public class ExperiencePanel extends javax.swing.JPanel {
                     expInYear,
                     txtProfSkill.getText()
             ), candidateType);
+            // Set the flag indicating a successful addition
             canAdd = true;
+            // Refresh the table display
             tableController.display(database.Query.getList(candidateType));
+            // Clear input fields
             btnCancel1MousePressed(evt);
         } catch (Exception e) {
+            // Set the flag indicating failure to add
             canAdd = false;
+            // Show error message
             javax.swing.JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnAddNewMousePressed
 
+    /**
+     * Loads the selected candidate's data into the input fields when a row in the table is clicked.
+     */
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // Get the selected row index
         int row = jTable1.getSelectedRow();
+        // Get the ID from the selected row
         String id = (String) jTable1.getValueAt(row, 0);
+        // Retrieve candidate properties by ID
         Object[] data = database.Query.getPropertiesById(id, candidateType);
+        // Populate input fields with candidate data
         txtId.setText((String) data[0]);
         txtFirstName.setText((String) data[1]);
         txtLastName.setText((String) data[2]);
@@ -393,37 +427,68 @@ public class ExperiencePanel extends javax.swing.JPanel {
         txtProfSkill.setText((String) data[8]);
     }//GEN-LAST:event_jTable1MousePressed
 
+    /**
+     * Deletes selected candidates from the table when the delete button is pressed.
+     */
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMousePressed
+        // Get selected rows
         int[] rows = jTable1.getSelectedRows();
+        // Loop through selected rows to delete candidates
         for (int row = 0; row < rows.length; row++) {
+            // Get the ID of the candidate to delete
             String id = (String) jTable1.getValueAt(row, 0);
+            // Find the candidate by ID
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
+            // Delete the candidate from the database
             database.Query.delete(candidate, candidateType);
         }
+        // Refresh the table display
         tableController.display(database.Query.getList(candidateType));
+        // Clear input fields
         btnCancel1MousePressed(evt);
     }//GEN-LAST:event_btnDeleteMousePressed
 
+    /**
+     * Updates the selected candidate's information when the update button is pressed.
+     */
     private void btnUpdateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMousePressed
+        // Get the selected row index
         int row = jTable1.getSelectedRow();
+        // Get the old ID from the selected row
         String oldId = (String) jTable1.getValueAt(row, 0);
+        // Find the old candidate by ID
         database.Candidate oldCandidate = database.Query.find(oldId, "", true, true, candidateType).get(0);
+        // Delete the old candidate from the database
         database.Query.delete(oldCandidate, candidateType);
+        // Attempt to add a new candidate
         btnAddNewMousePressed(evt);
+        // If addition failed, re-add the old candidate
         if (!canAdd) {
             database.Query.addNew(oldCandidate, candidateType);
         }
     }//GEN-LAST:event_btnUpdateMousePressed
 
+    /**
+     * Clears the search fields when the cancel button for search is pressed.
+     */
     private void btnCancel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel2MousePressed
+        // Clear the search ID field
         txtFindId.setText("");
+        // Clear the search Name field
         txtFindName.setText("");
+        // Reset the match case checkbox
         cbMatchCase.setSelected(false);
+        // Reset the match whole words checkbox
         cbMatchWord.setSelected(false);
+        // Refresh the table display
         tableController.display(database.Query.getList(candidateType));
     }//GEN-LAST:event_btnCancel2MousePressed
 
+    /**
+     * Finds and displays candidates based on the search criteria when the find all button is pressed.
+     */
     private void btnFindAllMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFindAllMousePressed
+        // Find candidates based on search criteria
         java.util.ArrayList<database.Candidate> list = database.Query.find(
                 txtFindId.getText(),
                 txtFindName.getText(),
@@ -431,6 +496,7 @@ public class ExperiencePanel extends javax.swing.JPanel {
                 cbMatchWord.isSelected(),
                 candidateType
         );
+        // Display the found candidates in the table
         tableController.display(list);
     }//GEN-LAST:event_btnFindAllMousePressed
 

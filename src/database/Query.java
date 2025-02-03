@@ -8,6 +8,7 @@ package database;
 import java.util.ArrayList;
 
 /**
+ * Query class provides methods to manage candidate data.
  *
  * @author PeterNguyen
  */
@@ -17,6 +18,11 @@ public class Query {
     private static final ArrayList<Candidate> fresherList = new ArrayList<>();
     private static final ArrayList<Candidate> intershipList = new ArrayList<>();
 
+    /**
+     * Retrieves the list of candidates based on the specified type.
+     * @param type the type of candidates to retrieve
+     * @return the list of candidates
+     */
     public static ArrayList<Candidate> getList(int type) {
         switch (type) {
             case 0:
@@ -29,11 +35,21 @@ public class Query {
         return null;
     }
 
+    /**
+     * Adds a new candidate to the specified list.
+     * @param candidate the candidate to add
+     * @param type the type of candidate
+     */
     public static void addNew(Candidate candidate, int type) {
         ArrayList<Candidate> list = getList(type);
         list.add(candidate);
     }
 
+    /**
+     * Deletes a candidate from the specified list.
+     * @param candidate the candidate to delete
+     * @param type the type of candidate
+     */
     public static void delete(Candidate candidate, int type) {
         ArrayList<Candidate> list = getList(type);
         list.remove(candidate);

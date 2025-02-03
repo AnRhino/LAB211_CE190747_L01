@@ -5,27 +5,26 @@
  */
 package view;
 
-import javax.swing.JPanel;
+import javax.swing.JPanel; // Import JPanel for creating panels
 
 /**
- *
- * @author PeterNguyen
+ * MenuFrame is the main menu interface for the application.
  */
 public class MenuFrame extends javax.swing.JFrame {
 
-    private final JPanel experiencePanel = new ExperiencePanel();
-    private final JPanel fresherPanel = new FresherPanel();
-    private final JPanel internshipPanel = new InternshipPanel();
+    private final JPanel experiencePanel = new ExperiencePanel(); // Panel for experience candidates
+    private final JPanel fresherPanel = new FresherPanel(); // Panel for fresher candidates
+    private final JPanel internshipPanel = new InternshipPanel(); // Panel for internship candidates
 
-    private boolean isExperienceSelected = false;
-    private boolean isFresherSelected = false;
-    private boolean isInternshipSelected = false;
+    private boolean isExperienceSelected = false; // Flag to check if experience panel is selected
+    private boolean isFresherSelected = false; // Flag to check if fresher panel is selected
+    private boolean isInternshipSelected = false; // Flag to check if internship panel is selected
 
     /**
-     * Creates new form MenuView
+     * Creates new form MenuFrame.
      */
     public MenuFrame() {
-        initComponents();
+        initComponents(); // Initialize components
     }
 
     /**
@@ -83,40 +82,78 @@ public class MenuFrame extends javax.swing.JFrame {
         setBounds(0, 0, 1018, 590);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles mouse press events for the fresher menu option.
+     * Closes any open menus and displays the fresher panel.
+     */
     private void menuFresherMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFresherMousePressed
+        // Close any open menus
         menuCloseMousePressed(evt);
+        // Set fresher selection state to true
         isFresherSelected = true;
+        // Add fresher panel to the frame
         this.add(fresherPanel);
+        // Resize the frame to fit the new panel
         this.pack();
     }//GEN-LAST:event_menuFresherMousePressed
 
+    /**
+     * Handles mouse press events for the experience menu option.
+     * Closes any open menus and displays the experience panel.
+     */
     private void menuExperienceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExperienceMousePressed
+        // Close any open menus
         menuCloseMousePressed(evt);
+        // Set experience selection state to true
         isExperienceSelected = true;
+        // Add experience panel to the frame
         this.add(experiencePanel);
+        // Resize the frame to fit the new panel
         this.pack();
     }//GEN-LAST:event_menuExperienceMousePressed
 
+    /**
+     * Handles mouse press events for closing the menu.
+     * Removes any currently displayed panels and resets their selection states.
+     */
     private void menuCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCloseMousePressed
+        // Check if experience panel is selected
         if (isExperienceSelected) {
+            // Remove experience panel from the frame
             this.remove(experiencePanel);
+            // Reset experience selection state
             isExperienceSelected = false;
         }
+        // Check if fresher panel is selected
         if (isFresherSelected) {
+            // Remove fresher panel from the frame
             this.remove(fresherPanel);
+            // Reset fresher selection state
             isFresherSelected = false;
         }
+        // Check if internship panel is selected
         if (isInternshipSelected) {
+            // Remove internship panel from the frame
             this.remove(internshipPanel);
+            // Reset internship selection state
             isInternshipSelected = false;
         }
+        // Set the size of the frame
         this.setSize(1018, 590);
     }//GEN-LAST:event_menuCloseMousePressed
 
+    /**
+     * Handles mouse press events for the internship menu option.
+     * Closes any open menus and displays the internship panel.
+     */
     private void menuInternshipMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuInternshipMousePressed
+        // Close any open menus
         menuCloseMousePressed(evt);
+        // Set internship selection state to true
         isInternshipSelected = true;
+        // Add internship panel to the frame
         this.add(internshipPanel);
+        // Resize the frame to fit the new panel
         this.pack();
     }//GEN-LAST:event_menuInternshipMousePressed
 

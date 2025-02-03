@@ -6,23 +6,22 @@
 package view;
 
 /**
- *
- * @author PeterNguyen
+ * InternshipPanel is a GUI panel for managing internship candidates.
  */
 public class InternshipPanel extends javax.swing.JPanel {
 
-    private final controller.TableController tableController;
-    private final int candidateType = 2;
-    private boolean canAdd;
+    private final controller.TableController tableController; // Controller for managing table data
+    private final int candidateType = 2; // Type for internship candidates
+    private boolean canAdd; // Flag to check if a candidate can be added
 
     /**
-     * Creates new form ExperiencePanel
+     * Creates new form InternshipPanel.
      */
     public InternshipPanel() {
-        initComponents();
-        tableController = new controller.TableController(jTable1);
-        jTable1.setVisible(true);
-        setVisible(true);
+        initComponents(); // Initialize components
+        tableController = new controller.TableController(jTable1); // Create a new TableController
+        jTable1.setVisible(true); // Make the table visible
+        setVisible(true); // Make the panel visible
     }
 
     /**
@@ -347,6 +346,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Clears all input fields when the cancel button is pressed.
+     */
     private void btnCancel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel1MousePressed
         txtId.setText("");
         txtFirstName.setText("");
@@ -360,6 +362,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         txtUniversity.setText("");
     }//GEN-LAST:event_btnCancel1MousePressed
 
+    /**
+     * Validates input fields and adds a new internship candidate when the add button is pressed.
+     */
     private void btnAddNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewMousePressed
         try {
             String id = database.Validation.checkId(txtId.getText(), candidateType);
@@ -389,6 +394,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAddNewMousePressed
 
+    /**
+     * Populates input fields with the selected candidate's data from the table when a row is clicked.
+     */
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
         int row = jTable1.getSelectedRow();
         String id = (String) jTable1.getValueAt(row, 0);
@@ -405,6 +413,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         txtUniversity.setText((String) data[9]);
     }//GEN-LAST:event_jTable1MousePressed
 
+    /**
+     * Deletes selected candidates from the table when the delete button is pressed.
+     */
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMousePressed
         int[] rows = jTable1.getSelectedRows();
         for (int row = 0; row < rows.length; row++) {
@@ -416,6 +427,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         btnCancel1MousePressed(evt);
     }//GEN-LAST:event_btnDeleteMousePressed
 
+    /**
+     * Updates the selected candidate's information by deleting the old entry and adding a new one.
+     */
     private void btnUpdateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMousePressed
         int row = jTable1.getSelectedRow();
         String oldId = (String) jTable1.getValueAt(row, 0);
@@ -427,6 +441,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUpdateMousePressed
 
+    /**
+     * Clears the search fields and refreshes the candidate list when the cancel button is pressed.
+     */
     private void btnCancel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancel2MousePressed
         txtFindId.setText("");
         txtFindName.setText("");
@@ -435,6 +452,9 @@ public class InternshipPanel extends javax.swing.JPanel {
         tableController.display(database.Query.getList(candidateType));
     }//GEN-LAST:event_btnCancel2MousePressed
 
+    /**
+     * Searches for candidates based on the provided criteria and displays the results.
+     */
     private void btnFindAllMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFindAllMousePressed
         java.util.ArrayList<database.Candidate> list = database.Query.find(
                 txtFindId.getText(),

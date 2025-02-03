@@ -9,7 +9,13 @@ import javax.swing.JTable; // Import JTable for displaying data
 import javax.swing.table.DefaultTableModel; // Import DefaultTableModel for table data model
 
 /**
- * TableController is responsible for managing the display of candidate data in a JTable.
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
+ * TableController is responsible for managing the display of candidate data in
+ * a JTable.
  */
 public class TableController {
 
@@ -17,6 +23,7 @@ public class TableController {
 
     /**
      * Constructs a TableController for the specified JTable.
+     * 
      * @param table the JTable to be controlled
      */
     public TableController(JTable table) {
@@ -25,6 +32,7 @@ public class TableController {
 
     /**
      * Displays the list of candidates in the JTable.
+     * 
      * @param list the list of candidates to display
      */
     public void display(java.util.ArrayList<database.Candidate> list) {

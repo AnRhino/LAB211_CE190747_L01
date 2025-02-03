@@ -6,6 +6,11 @@
 package database;
 
 /**
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
  * Experience represents a candidate with work experience.
  */
 public class Experience extends Candidate {
@@ -15,17 +20,19 @@ public class Experience extends Candidate {
 
     /**
      * Constructs an Experience candidate with the specified details.
+     * 
      * @param candidateID the candidate's ID
-     * @param firstName the candidate's first name
-     * @param lastName the candidate's last name
-     * @param birthYear the candidate's birth year
-     * @param address the candidate's address
-     * @param phone the candidate's phone number
-     * @param email the candidate's email address
-     * @param expInYear the candidate's years of experience
-     * @param proSkill the candidate's professional skills
+     * @param firstName   the candidate's first name
+     * @param lastName    the candidate's last name
+     * @param birthYear   the candidate's birth year
+     * @param address     the candidate's address
+     * @param phone       the candidate's phone number
+     * @param email       the candidate's email address
+     * @param expInYear   the candidate's years of experience
+     * @param proSkill    the candidate's professional skills
      */
-    public Experience(String candidateID, String firstName, String lastName, int birthYear, String address, String phone, String email, int expInYear, String proSkill) {
+    public Experience(String candidateID, String firstName, String lastName, int birthYear, String address,
+            String phone, String email, int expInYear, String proSkill) {
         super(candidateID, firstName, lastName, birthYear, address, phone, email); // Call the parent constructor
         this.expInYear = expInYear; // Set years of experience
         this.proSkill = proSkill; // Set professional skills
@@ -33,20 +40,21 @@ public class Experience extends Candidate {
 
     /**
      * Converts the experience candidate's properties to an array.
+     * 
      * @return an array of the experience candidate's properties
      */
     @Override
     public Object[] toArrayOfProperties() {
-        return new Object[]{
-            getId(), // Get candidate ID
-            getFirstName(), // Get candidate first name
-            getLastName(), // Get candidate last name
-            getBirthYear(), // Get candidate birth year
-            getAddress(), // Get candidate address
-            getPhone(), // Get candidate phone number
-            getEmail(), // Get candidate email address
-            expInYear, // Get years of experience
-            proSkill // Get professional skills
+        return new Object[] {
+                getId(), // Get candidate ID
+                getFirstName(), // Get candidate first name
+                getLastName(), // Get candidate last name
+                getBirthYear(), // Get candidate birth year
+                getAddress(), // Get candidate address
+                getPhone(), // Get candidate phone number
+                getEmail(), // Get candidate email address
+                expInYear, // Get years of experience
+                proSkill // Get professional skills
         };
     }
 

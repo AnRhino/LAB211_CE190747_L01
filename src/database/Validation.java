@@ -6,13 +6,19 @@
 package database;
 
 /**
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
  * Validation class provides methods to validate candidate data.
  */
 public class Validation {
 
     /**
      * Validates the candidate ID.
-     * @param id the candidate ID to validate
+     * 
+     * @param id   the candidate ID to validate
      * @param type the type of candidate
      * @return the validated ID
      * @throws Exception if the ID is invalid

@@ -8,9 +8,12 @@ package database;
 import java.util.ArrayList;
 
 /**
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
  * Query class provides methods to manage candidate data.
- *
- * @author PeterNguyen
  */
 public class Query {
 
@@ -20,6 +23,7 @@ public class Query {
 
     /**
      * Retrieves the list of candidates based on the specified type.
+     * 
      * @param type the type of candidates to retrieve
      * @return the list of candidates
      */
@@ -37,8 +41,9 @@ public class Query {
 
     /**
      * Adds a new candidate to the specified list.
+     * 
      * @param candidate the candidate to add
-     * @param type the type of candidate
+     * @param type      the type of candidate
      */
     public static void addNew(Candidate candidate, int type) {
         ArrayList<Candidate> list = getList(type);
@@ -47,15 +52,17 @@ public class Query {
 
     /**
      * Deletes a candidate from the specified list.
+     * 
      * @param candidate the candidate to delete
-     * @param type the type of candidate
+     * @param type      the type of candidate
      */
     public static void delete(Candidate candidate, int type) {
         ArrayList<Candidate> list = getList(type);
         list.remove(candidate);
     }
 
-    private static ArrayList<Candidate> findById(ArrayList<Candidate> list, String id, boolean matchCase, boolean matchWord) {
+    private static ArrayList<Candidate> findById(ArrayList<Candidate> list, String id, boolean matchCase,
+            boolean matchWord) {
         ArrayList<Candidate> findList = new ArrayList<>();
         list.forEach(candidate -> {
             if (matchWord) {
@@ -83,7 +90,8 @@ public class Query {
         return findList;
     }
 
-    private static ArrayList<Candidate> findByName(ArrayList<Candidate> list, String name, boolean matchCase, boolean matchWord) {
+    private static ArrayList<Candidate> findByName(ArrayList<Candidate> list, String name, boolean matchCase,
+            boolean matchWord) {
         ArrayList<Candidate> findList = new ArrayList<>();
         list.forEach(candidate -> {
             if (matchWord) {

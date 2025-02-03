@@ -6,6 +6,11 @@
 package database;
 
 /**
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
  * Fresher represents a candidate who has recently graduated.
  */
 public class Fresher extends Candidate {
@@ -16,18 +21,20 @@ public class Fresher extends Candidate {
 
     /**
      * Constructs a Fresher candidate with the specified details.
-     * @param candidateID the candidate's ID
-     * @param firstName the candidate's first name
-     * @param lastName the candidate's last name
-     * @param yearOfBirth the candidate's birth year
-     * @param address the candidate's address
-     * @param phone the candidate's phone number
-     * @param email the candidate's email address
+     * 
+     * @param candidateID    the candidate's ID
+     * @param firstName      the candidate's first name
+     * @param lastName       the candidate's last name
+     * @param yearOfBirth    the candidate's birth year
+     * @param address        the candidate's address
+     * @param phone          the candidate's phone number
+     * @param email          the candidate's email address
      * @param graduationYear the candidate's graduation year
      * @param graduationRank the candidate's graduation rank
-     * @param university the candidate's university
+     * @param university     the candidate's university
      */
-    public Fresher(String candidateID, String firstName, String lastName, int yearOfBirth, String address, String phone, String email, int graduationYear, String graduationRank, String university) {
+    public Fresher(String candidateID, String firstName, String lastName, int yearOfBirth, String address, String phone,
+            String email, int graduationYear, String graduationRank, String university) {
         super(candidateID, firstName, lastName, yearOfBirth, address, phone, email); // Call the parent constructor
         this.graduationYear = graduationYear; // Set graduation year
         this.graduationRank = graduationRank; // Set graduation rank
@@ -36,21 +43,22 @@ public class Fresher extends Candidate {
 
     /**
      * Converts the fresher candidate's properties to an array.
+     * 
      * @return an array of the fresher candidate's properties
      */
     @Override
     public Object[] toArrayOfProperties() {
-        return new Object[]{
-            getId(), // Get candidate ID
-            getFirstName(), // Get candidate first name
-            getLastName(), // Get candidate last name
-            getBirthYear(), // Get candidate birth year
-            getAddress(), // Get candidate address
-            getPhone(), // Get candidate phone number
-            getEmail(), // Get candidate email address
-            graduationYear, // Get graduation year
-            graduationRank, // Get graduation rank
-            university // Get university name
+        return new Object[] {
+                getId(), // Get candidate ID
+                getFirstName(), // Get candidate first name
+                getLastName(), // Get candidate last name
+                getBirthYear(), // Get candidate birth year
+                getAddress(), // Get candidate address
+                getPhone(), // Get candidate phone number
+                getEmail(), // Get candidate email address
+                graduationYear, // Get graduation year
+                graduationRank, // Get graduation rank
+                university // Get university name
         };
     }
 

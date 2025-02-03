@@ -6,7 +6,13 @@
 package database;
 
 /**
- * Candidate is an abstract class representing a candidate with personal details.
+ * L01 - Create a Java console program to manage Candidates of company
+ * 
+ * @author Nguyen Ho Phuoc An - CE190747
+ */
+/**
+ * Candidate is an abstract class representing a candidate with personal
+ * details.
  */
 public abstract class Candidate {
 
@@ -20,15 +26,17 @@ public abstract class Candidate {
 
     /**
      * Constructs a Candidate with the specified details.
-     * @param id the candidate's ID
+     * 
+     * @param id        the candidate's ID
      * @param firstName the candidate's first name
-     * @param lastName the candidate's last name
+     * @param lastName  the candidate's last name
      * @param birthYear the candidate's birth year
-     * @param address the candidate's address
-     * @param phone the candidate's phone number
-     * @param email the candidate's email address
+     * @param address   the candidate's address
+     * @param phone     the candidate's phone number
+     * @param email     the candidate's email address
      */
-    public Candidate(String id, String firstName, String lastName, int birthYear, String address, String phone, String email) {
+    public Candidate(String id, String firstName, String lastName, int birthYear, String address, String phone,
+            String email) {
         this.id = id; // Set candidate ID
         this.firstName = firstName; // Set candidate first name
         this.lastName = lastName; // Set candidate last name
@@ -68,6 +76,7 @@ public abstract class Candidate {
 
     /**
      * Converts the candidate's properties to an array.
+     * 
      * @return an array of the candidate's properties
      */
     public abstract Object[] toArrayOfProperties(); // Abstract method to convert properties to an array

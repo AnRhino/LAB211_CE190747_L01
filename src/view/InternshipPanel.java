@@ -356,15 +356,25 @@ public class InternshipPanel extends javax.swing.JPanel {
      * Clears all input fields when the cancel button is pressed.
      */
     private void btnCancel1MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnCancel1MousePressed
+        // Clear the ID field
         txtId.setText("");
+        // Clear the first name field
         txtFirstName.setText("");
+        // Clear the last name field
         txtLastName.setText("");
+        // Clear the birth year field
         txtBirthYear.setText("");
+        // Clear the address field
         txtAddress.setText("");
+        // Clear the phone field
         txtPhone.setText("");
+        // Clear the email field
         txtEmail.setText("");
+        // Clear the major field
         txtMajor.setText("");
+        // Clear the semester field
         txtSemester.setText("");
+        // Clear the university field
         txtUniversity.setText("");
     }// GEN-LAST:event_btnCancel1MousePressed
 
@@ -374,12 +384,19 @@ public class InternshipPanel extends javax.swing.JPanel {
      */
     private void btnAddNewMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnAddNewMousePressed
         try {
+            // Validate the ID
             String id = database.Validation.checkId(txtId.getText(), candidateType);
+            // Validate the first name
             String firstName = database.Validation.checkName(txtFirstName.getText());
+            // Validate the last name
             String lastName = database.Validation.checkName(txtLastName.getText());
+            // Validate the birth year
             int birthYear = database.Validation.checkBirthYear(txtBirthYear.getText());
+            // Validate the phone number
             String phone = database.Validation.checkPhone(txtPhone.getText());
+            // Validate the email
             String email = database.Validation.checkEmail(txtEmail.getText());
+            // Add the new internship candidate to the database
             database.Query.addNew(new database.Internship(
                     id,
                     firstName,
@@ -391,11 +408,16 @@ public class InternshipPanel extends javax.swing.JPanel {
                     txtMajor.getText(),
                     txtSemester.getText(),
                     txtUniversity.getText()), candidateType);
+            // Set the flag indicating a successful addition
             canAdd = true;
+            // Refresh the displayed candidate list
             tableController.display(database.Query.getList(candidateType));
+            // Clear input fields
             btnCancel1MousePressed(evt);
         } catch (Exception e) {
+            // Set the flag indicating a failed addition
             canAdd = false;
+            // Show an error message
             javax.swing.JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }// GEN-LAST:event_btnAddNewMousePressed
@@ -405,18 +427,31 @@ public class InternshipPanel extends javax.swing.JPanel {
      * a row is clicked.
      */
     private void tbDataMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable1MousePressed
+        // Get the selected row index
         int row = tbData.getSelectedRow();
+        // Get the ID of the selected candidate
         String id = (String) tbData.getValueAt(row, 0);
+        // Retrieve candidate data by ID
         Object[] data = database.Query.getPropertiesById(id, candidateType);
+        // Populate the ID field
         txtId.setText((String) data[0]);
+        // Populate the first name field
         txtFirstName.setText((String) data[1]);
+        // Populate the last name field
         txtLastName.setText((String) data[2]);
+        // Populate the birth year field
         txtBirthYear.setText((int) data[3] + "");
+        // Populate the address field
         txtAddress.setText((String) data[4]);
+        // Populate the phone field
         txtPhone.setText((String) data[5]);
+        // Populate the email field
         txtEmail.setText((String) data[6]);
+        // Populate the major field
         txtMajor.setText((String) data[7]);
+        // Populate the semester field
         txtSemester.setText((String) data[8]);
+        // Populate the university field
         txtUniversity.setText((String) data[9]);
     }// GEN-LAST:event_jTable1MousePressed
 
@@ -424,13 +459,20 @@ public class InternshipPanel extends javax.swing.JPanel {
      * Deletes selected candidates from the table when the delete button is pressed.
      */
     private void btnDeleteMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnDeleteMousePressed
+        // Get the selected rows
         int[] rows = tbData.getSelectedRows();
+        // Loop through each selected row
         for (int i = 0; i < rows.length; i++) {
+            // Get the ID of the candidate to delete
             String id = (String) tbData.getValueAt(rows[i], 0);
+            // Find the candidate in the database
             database.Candidate candidate = database.Query.find(id, "", true, true, candidateType).get(0);
+            // Delete the candidate from the database
             database.Query.delete(candidate, candidateType);
         }
+        // Refresh the displayed candidate list
         tableController.display(database.Query.getList(candidateType));
+        // Clear input fields
         btnCancel1MousePressed(evt);
     }// GEN-LAST:event_btnDeleteMousePressed
 
@@ -439,11 +481,17 @@ public class InternshipPanel extends javax.swing.JPanel {
      * adding a new one.
      */
     private void btnUpdateMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnUpdateMousePressed
+        // Get the selected row index
         int row = tbData.getSelectedRow();
+        // Get the ID of the old candidate
         String oldId = (String) tbData.getValueAt(row, 0);
+        // Find the old candidate in the database
         database.Candidate oldCandidate = database.Query.find(oldId, "", true, true, candidateType).get(0);
+        // Delete the old candidate from the database
         database.Query.delete(oldCandidate, candidateType);
+        // Add the new candidate
         btnAddNewMousePressed(evt);
+        // If the addition failed, re-add the old candidate
         if (!canAdd) {
             database.Query.addNew(oldCandidate, candidateType);
         }
@@ -454,10 +502,15 @@ public class InternshipPanel extends javax.swing.JPanel {
      * button is pressed.
      */
     private void btnCancel2MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnCancel2MousePressed
+        // Clear the ID search field
         txtFindId.setText("");
+        // Clear the name search field
         txtFindName.setText("");
+        // Uncheck the match case checkbox
         cbMatchCase.setSelected(false);
+        // Uncheck the match word checkbox
         cbMatchWord.setSelected(false);
+        // Refresh the displayed candidate list
         tableController.display(database.Query.getList(candidateType));
     }// GEN-LAST:event_btnCancel2MousePressed
 
@@ -466,12 +519,14 @@ public class InternshipPanel extends javax.swing.JPanel {
      * results.
      */
     private void btnFindAllMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnFindAllMousePressed
+        // Find candidates based on the search criteria
         java.util.ArrayList<database.Candidate> list = database.Query.find(
                 txtFindId.getText(),
                 txtFindName.getText(),
                 cbMatchCase.isSelected(),
                 cbMatchWord.isSelected(),
                 candidateType);
+        // Display the search results
         tableController.display(list);
     }// GEN-LAST:event_btnFindAllMousePressed
 

@@ -9,6 +9,8 @@ package view;
  * L01 - Create a Java console program to manage Candidates of company
  * 
  * @author Nguyen Ho Phuoc An - CE190747
+ * 
+ * Last modified: 5/2/2025
  */
 /**
  * InternshipPanel is a GUI panel for managing internship candidates.

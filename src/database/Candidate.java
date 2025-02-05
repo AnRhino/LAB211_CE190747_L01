@@ -9,6 +9,8 @@ package database;
  * L01 - Create a Java console program to manage Candidates of company
  * 
  * @author Nguyen Ho Phuoc An - CE190747
+ * 
+ * Last modified: 5/2/2025
  */
 /**
  * Candidate is an abstract class representing a candidate with personal

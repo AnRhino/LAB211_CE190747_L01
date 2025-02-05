@@ -11,6 +11,8 @@ import javax.swing.JPanel; // Import JPanel for creating panels
  * L01 - Create a Java console program to manage Candidates of company
  * 
  * @author Nguyen Ho Phuoc An - CE190747
+ * 
+ * Last modified: 5/2/2025
  */
 /**
  * MenuFrame is the main menu interface for the application.

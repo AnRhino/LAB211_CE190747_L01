@@ -475,7 +475,7 @@ public class FresherPanel extends javax.swing.JPanel {
      * Handles the action of selecting a row in the table.
      * Populates the input fields with the selected candidate's data.
      */
-    private void tbDataMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable1MousePressed
+    private void tbDataMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbDataMousePressed
         // Get the selected row index
         int row = tbData.getSelectedRow();
         // Retrieve ID from the selected row
@@ -493,7 +493,7 @@ public class FresherPanel extends javax.swing.JPanel {
         txtGraduationYear.setText((int) data[7] + "");
         cbbGraduationRank.setSelectedItem((String) data[8]);
         txtUniversity.setText((String) data[9]);
-    }// GEN-LAST:event_jTable1MousePressed
+    }// GEN-LAST:event_tbDataMousePressed
 
     /**
      * Handles the action of the Delete button.

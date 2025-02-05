@@ -415,7 +415,7 @@ public class ExperiencePanel extends javax.swing.JPanel {
      * Loads the selected candidate's data into the input fields when a row in the
      * table is clicked.
      */
-    private void tbDataMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable1MousePressed
+    private void tbDataMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbDataMousePressed
         // Get the selected row index
         int row = tbData.getSelectedRow();
         // Get the ID from the selected row
@@ -432,7 +432,7 @@ public class ExperiencePanel extends javax.swing.JPanel {
         txtEmail.setText((String) data[6]);
         txtExpInYear.setText((int) data[7] + "");
         txtProfSkill.setText((String) data[8]);
-    }// GEN-LAST:event_jTable1MousePressed
+    }// GEN-LAST:event_tbDataMousePressed
 
     /**
      * Deletes selected candidates from the table when the delete button is pressed.

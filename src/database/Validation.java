@@ -10,7 +10,7 @@ package database;
  * 
  * @author Nguyen Ho Phuoc An - CE190747
  * 
- * Last modified: 5/2/2025
+ * Last modified: 6/2/2025
  */
 /**
  * Validation class provides methods to validate candidate data.
@@ -27,19 +27,24 @@ public class Validation {
      */
     public static String checkId(String id, int type) throws Exception {
         // Trim and convert ID to uppercase
-        id = id.trim().toUpperCase(); 
+        id = id.trim().toUpperCase();
         // Check if ID is empty
-        if (id.isEmpty()) { 
+        if (id.isEmpty()) {
             // Throw exception if empty
-            throw new Exception("Id must not be empty"); 
+            throw new Exception("Id must not be empty");
         }
         // Check if ID already exists
-        if (database.Query.getIdList(type).contains(id)) { 
+        if (database.Query.getIdList(type).contains(id)) {
             // Throw exception if exists
-            throw new Exception("Id already existed"); 
+            throw new Exception("Id already existed");
+        }
+        // Check if ID matches the required format
+        if (!id.matches("^[A-Z]\\w*$")) {
+            // Throw exception if format is invalid
+            throw new Exception("Id must contain letters and numbers only, and must begin with a letter");
         }
         // Return validated ID
-        return id; 
+        return id;
     }
 
     /**
@@ -161,6 +166,11 @@ public class Validation {
         if (name.isEmpty()) {
             // Throw exception if empty
             throw new Exception("Name must not be empty");
+        }
+        // Check if name matches the required format
+        if (!name.matches("^\\w+( \\w+)*$")) {
+            // Throw exception if format is invalid
+            throw new Exception("Name must contain letter and spaces only");
         }
         // Return validated name
         return name;

@@ -48,30 +48,65 @@ public abstract class Candidate {
         this.email = email; // Set candidate email address
     }
 
+    /**
+     * Retrieves the candidate ID.
+     * 
+     * @return the candidate ID
+     */
     public String getId() {
         return id; // Return candidate ID
     }
 
+    /**
+     * Retrieves the candidate's birth year.
+     * 
+     * @return the candidate birth year
+     */
     public int getBirthYear() {
         return birthYear; // Return candidate birth year
     }
 
+    /**
+     * Retrieves the candidate's address.
+     * 
+     * @return the candidate address
+     */
     public String getAddress() {
         return address; // Return candidate address
     }
 
+    /**
+     * Retrieves the candidate's phone number.
+     * 
+     * @return the candidate phone number
+     */
     public String getPhone() {
         return phone; // Return candidate phone number
     }
 
+    /**
+     * Retrieves the candidate's email address.
+     * 
+     * @return the candidate email address
+     */
     public String getEmail() {
         return email; // Return candidate email address
     }
 
+    /**
+     * Retrieves the candidate's first name.
+     * 
+     * @return the candidate first name
+     */
     public String getFirstName() {
         return firstName; // Return candidate first name
     }
 
+    /**
+     * Retrieves the candidate's last name.
+     * 
+     * @return the candidate last name
+     */
     public String getLastName() {
         return lastName; // Return candidate last name
     }
@@ -81,5 +116,5 @@ public abstract class Candidate {
      * 
      * @return an array of the candidate's properties
      */
-    public abstract Object[] toArrayOfProperties(); // Abstract method to convert properties to an array
+    public abstract Object[] toArrayOfProperties();
 }

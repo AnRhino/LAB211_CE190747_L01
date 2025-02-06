@@ -36,6 +36,13 @@ public class Validation {
         return id; // Return validated ID
     }
 
+    /**
+     * Validates the birth year.
+     * 
+     * @param birthYear the birth year to validate
+     * @return the validated birth year as an integer
+     * @throws Exception if the birth year is invalid
+     */
     public static int checkBirthYear(String birthYear) throws Exception {
         try {
             int birthYearInt = Integer.parseInt(birthYear);
@@ -49,6 +56,13 @@ public class Validation {
         }
     }
 
+    /**
+     * Validates the graduation year.
+     * 
+     * @param graduationYear the graduation year to validate
+     * @return the validated graduation year as an integer
+     * @throws Exception if the graduation year is invalid
+     */
     public static int checkGraduationYear(String graduationYear) throws Exception {
         try {
             int graduationYearInt = Integer.parseInt(graduationYear);
@@ -62,6 +76,13 @@ public class Validation {
         }
     }
 
+    /**
+     * Validates the phone number.
+     * 
+     * @param phone the phone number to validate
+     * @return the validated phone number
+     * @throws Exception if the phone number is invalid
+     */
     public static String checkPhone(String phone) throws Exception {
         phone = phone.trim();
         if (phone.isEmpty()) {
@@ -76,6 +97,13 @@ public class Validation {
         return phone;
     }
 
+    /**
+     * Validates the email address.
+     * 
+     * @param email the email address to validate
+     * @return the validated email address
+     * @throws Exception if the email address is invalid
+     */
     public static String checkEmail(String email) throws Exception {
         email = email.trim();
         if (email.isEmpty()) {
@@ -87,6 +115,13 @@ public class Validation {
         return email;
     }
 
+    /**
+     * Validates the candidate's name.
+     * 
+     * @param name the name to validate
+     * @return the validated name
+     * @throws Exception if the name is invalid
+     */
     public static String checkName(String name) throws Exception {
         name = name.trim().replaceAll(" +", " ");
         if (name.isEmpty()) {
@@ -95,6 +130,13 @@ public class Validation {
         return name;
     }
 
+    /**
+     * Validates the years of experience.
+     * 
+     * @param expInYear the years of experience to validate
+     * @return the validated years of experience as an integer
+     * @throws Exception if the years of experience are invalid
+     */
     public static int checkExpInYear(String expInYear) throws Exception {
         try {
             int expInYearInt = Integer.parseInt(expInYear);

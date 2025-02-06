@@ -47,7 +47,7 @@ public class Query {
     }
 
     /**
-     * Adds a new candidate to the specified list.
+     * Adds a new candidate to the specified list based on the candidate type.
      * 
      * @param candidate the candidate to add
      * @param type      the type of candidate
@@ -60,7 +60,7 @@ public class Query {
     }
 
     /**
-     * Deletes a candidate from the specified list.
+     * Deletes a candidate from the specified list based on the candidate type.
      * 
      * @param candidate the candidate to delete
      * @param type      the type of candidate
@@ -72,6 +72,15 @@ public class Query {
         list.remove(candidate);
     }
 
+    /**
+     * Finds candidates in the provided list by their ID based on matching criteria.
+     * 
+     * @param list      the list of candidates to search
+     * @param id        the ID to search for
+     * @param matchCase whether to match case
+     * @param matchWord whether to match whole words
+     * @return a list of candidates that match the search criteria
+     */
     private static ArrayList<Candidate> findById(ArrayList<Candidate> list, String id, boolean matchCase,
             boolean matchWord) {
         // Create a list to store found candidates
@@ -111,6 +120,15 @@ public class Query {
         return findList;
     }
 
+    /**
+     * Finds candidates in the provided list by their name based on matching criteria.
+     * 
+     * @param list      the list of candidates to search
+     * @param name      the name to search for
+     * @param matchCase whether to match case
+     * @param matchWord whether to match whole words
+     * @return a list of candidates that match the search criteria
+     */
     private static ArrayList<Candidate> findByName(ArrayList<Candidate> list, String name, boolean matchCase,
             boolean matchWord) {
         // Create a list to store found candidates
@@ -154,6 +172,16 @@ public class Query {
         return findList;
     }
 
+    /**
+     * Finds candidates based on the provided ID and name, applying matching criteria.
+     * 
+     * @param id        the ID to search for
+     * @param name      the name to search for
+     * @param matchCase whether to match case
+     * @param matchWord whether to match whole words
+     * @param type      the type of candidates to search
+     * @return a list of candidates that match the search criteria
+     */
     public static ArrayList<Candidate> find(String id, String name, boolean matchCase, boolean matchWord, int type) {
         // Get the appropriate list based on the candidate type
         ArrayList<Candidate> list = getList(type);
@@ -169,6 +197,13 @@ public class Query {
         return list;
     }
 
+    /**
+     * Retrieves the properties of a candidate by their ID.
+     * 
+     * @param id   the ID of the candidate
+     * @param type the type of candidate
+     * @return an array of the candidate's properties
+     */
     public static Object[] getPropertiesById(String id, int type) {
         // Get the appropriate list based on the candidate type
         ArrayList<Candidate> list = getList(type);
@@ -176,6 +211,12 @@ public class Query {
         return findById(list, id, true, true).get(0).toArrayOfProperties();
     }
 
+    /**
+     * Retrieves a list of candidate IDs based on the specified type.
+     * 
+     * @param type the type of candidates to retrieve IDs for
+     * @return a list of candidate IDs
+     */
     public static ArrayList<String> getIdList(int type) {
         // Get the appropriate list based on the candidate type
         ArrayList<Candidate> list = getList(type);
